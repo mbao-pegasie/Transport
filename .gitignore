@@ -1,0 +1,6 @@
+/target/
+/report.html
+/screenshot
+/.idea/compiler.xml
+.idea
+*.iml

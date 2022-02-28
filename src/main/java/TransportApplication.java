@@ -81,7 +81,7 @@ public class TransportApplication {
 						break;
 					}
 					//for those left orders that all flights to destination already full
-					if(i == totalFlights && orderByDes.size() > 0){
+					if(i == (totalFlights - 1) && orderByDes.size() > 0){
 						for (Order notLoaded : orderByDes) {
 							System.out.println(String.format("Order : %s, flightNumber : not scheduled", notLoaded.getOrderNumber()));
 						}
