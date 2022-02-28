@@ -33,14 +33,6 @@ public class FlightManager {
 		return listByDestination;
 	}
 
-	public List<Flight> getFlightListByDay(String value) {
-		return fightList.stream().filter(s -> (s.getFlightDay()).equals(value)).collect(Collectors.toList());
-	}
-
-	public List<Flight> getFlightListByDestinationAndDay(DestinationAirport airport, String day) {
-		return fightList.stream().filter(s -> ((s.getDestinationAirport().name()).equals(airport.name())) && (s.getFlightDay().equals(day))).collect(Collectors.toList());
-	}
-
 	public void displayAllFlight() {
 		for (Flight f : fightList) {
 			System.out.print(f + "\n");
@@ -65,10 +57,6 @@ public class FlightManager {
 			System.out.println("The flight " + flight.getFlightNumber() + " is already full, the order: " + order.getOrderNumber() + " not loaded");
 		}
 		return loaded;
-	}
-
-	public List<Flight> getFightList() {
-		return fightList;
 	}
 
 	public void setFightList(List<Flight> fightList) {

@@ -5,32 +5,18 @@ public class Order {
 	private int priority;
 	private DestinationAirport destinationAirport;
 
-	public Order(){
-
-	}
+	public Order(){}
 
 	public String getOrderNumber() {
 		return orderNumber;
-	}
-
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
 	}
 
 	public int getPriority() {
 		return priority;
 	}
 
-	public void setPriority(int priority) {
-		this.priority = priority;
-	}
-
 	public DestinationAirport getDestinationAirport() {
 		return destinationAirport;
-	}
-
-	public void setDestinationAirport(DestinationAirport destinationAirport) {
-		this.destinationAirport = destinationAirport;
 	}
 
 	@Override

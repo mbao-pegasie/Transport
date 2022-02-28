@@ -12,15 +12,12 @@ import java.util.Iterator;
 
 public class Helper {
 
-	private static final String FILE_SOURCE = "src/main/resources/orders_raw_data.json";
-	private static final String FINAL_DESTINATION = "src/main/resources/Coding-assigment-orders.json";
-
 	//Helper function to convert Json file to Json array file:
-	public static void rawDataConverter() throws IOException, ParseException {
+	public static void rawDataConverter(String sourceFile, String destinationFalse) throws IOException, ParseException {
 
 		JSONParser jsonParser = new JSONParser();
 		JSONArray orderList = new JSONArray();
-		try(FileReader reader = new FileReader(FILE_SOURCE)) {
+		try(FileReader reader = new FileReader(sourceFile)) {
 			Object obj = jsonParser.parse(reader);
 			JSONObject order = (JSONObject) obj;
 			for(Iterator iterator = order.keySet().iterator(); iterator.hasNext();) {
@@ -37,7 +34,7 @@ public class Helper {
 			}
 		}
 
-		try (FileWriter file = new FileWriter(FINAL_DESTINATION)) {
+		try (FileWriter file = new FileWriter(destinationFalse)) {
 			//We can write any JSONArray or JSONObject instance to the file
 			file.write(orderList.toJSONString());
 			file.flush();

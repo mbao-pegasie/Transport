@@ -37,40 +37,9 @@ public class Flight {
 		return destinationAirport;
 	}
 
-	public String getDepartureTime() {
-		return departureTime;
-	}
-
-	public String getReturnTime() {
-		return returnTime;
-	}
 
 	public int getCapacity() {
 		return capacity;
-	}
-
-	public void setFlightNumber(String flightNumber) {
-		this.flightNumber = flightNumber;
-	}
-
-	public void setFlightDay(String flightDay) {
-		this.flightDay = flightDay;
-	}
-
-	public void setDepartureAirport(DepartureAirport departureAirport) {
-		this.departureAirport = departureAirport;
-	}
-
-	public void setDestinationAirport(DestinationAirport destinationAirport) {
-		this.destinationAirport = destinationAirport;
-	}
-
-	public void setDepartureTime(String departureTime) {
-		this.departureTime = departureTime;
-	}
-
-	public void setReturnTime(String returnTime) {
-		this.returnTime = returnTime;
 	}
 
 	public void setCapacity(int capacity) {

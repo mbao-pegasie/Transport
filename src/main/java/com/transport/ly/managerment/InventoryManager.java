@@ -31,16 +31,6 @@ public class InventoryManager {
 		this.orderList.addAll(orderList);
 	}
 
-	public void consumeInventory(Order o){
-		this.orderList.remove(o);
-	}
-
-	public void consumeInventory(List<Order> orderList){
-		for (Order o: orderList) {
-			this.orderList.remove(o);
-		}
-	}
-
 	public List<Order> getOrderListByDestination(DestinationAirport value){
 		return this.orderList.stream().filter(s -> (s.getDestinationAirport().name()).equals(value.name())).collect(Collectors.toList());
 	}

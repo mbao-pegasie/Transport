@@ -16,7 +16,8 @@ public class TransportApplication {
 
 	public static void main(String[] args) throws IOException, ParseException {
 
-		String fileName = "src/main/resources/Coding-assigment-orders.json";
+		String sourceRawFile = "src/main/resources/orders_raw_data.json";
+		String destinationFile = "src/main/resources/Coding-assigment-orders.json";
 
 		List<Flight> flights = Arrays.asList(
 				new Flight("Flight1", DepartureAirport.YUL, DestinationAirport.YYZ, "1"),
@@ -29,18 +30,18 @@ public class TransportApplication {
 
 		// For user story #1
 		FlightManager user = new FlightManager(flights);
+		//display all flights
 		user.displayAllFlight();
 
 		//For user story #2
-
 		//Flights from one specific Airport to load Orders: for example: Montreal
 		List<Flight> flightFromMontreal = user.getFlightListByDeparture(DepartureAirport.YUL);
 		user.setFightList(flightFromMontreal);
 
 		//load Orders from file
-		Helper.rawDataConverter();
+		Helper.rawDataConverter(sourceRawFile, destinationFile);
 		InventoryManager manager = new InventoryManager();
-		manager.loadedInventory(fileName);
+		manager.loadedInventory(destinationFile);
 		List<Order> orderList = manager.getCurrentInventory();
 		System.out.println("Total Orders in list = " + orderList.size());
 
