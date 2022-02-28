@@ -29,33 +29,50 @@ public class FlightManager {
 
 	public List<Flight> sortFlightListByDestinationAndDay(DestinationAirport value) {
 		List<Flight> listByDestination = getFlightListByDestination(value);
-		listByDestination.sort(Comparator.comparing(Flight::getFlightDay));
+		if(listByDestination.size() > 0) {
+			listByDestination.sort(Comparator.comparing(Flight::getFlightDay));
+		}
 		return listByDestination;
 	}
 
 	public void displayAllFlight() {
-		for (Flight f : fightList) {
-			System.out.print(f + "\n");
+		if(fightList.size() > 0) {
+			for (Flight f : fightList) {
+				System.out.print(f + "\n");
+			}
+		} else {
+			System.out.println("There is no flights to display!");
 		}
+
 	}
 
 	public void displayAllFlight(List<Flight> flightListGiven) {
-		for (Flight f : flightListGiven) {
-			System.out.print(f + "\n");
+		if(flightListGiven.size() > 0) {
+			for (Flight f : flightListGiven) {
+				System.out.print(f + "\n");
+			}
+		} else {
+			System.out.println("There is no flights to display!");
 		}
 	}
 
 	public boolean loadOrder(Flight flight, Order order) {
 		boolean loaded = false;
-		if (!flight.isCapacityFull()) {
-			flight.setCapacity(flight.getCapacity() + 1);
-			loaded = true;
-			if (flight.getCapacity() == flight.getMAX_CAPACITY()) {
-				flight.setCapacityFull(true);
+		if(flight.getDestinationAirport().name().equals(order.getDestinationAirport().name())) {
+			if (!flight.isCapacityFull()) {
+				flight.setCapacity(flight.getCapacity() + 1);
+				loaded = true;
+				if (flight.getCapacity() == flight.getMAX_CAPACITY()) {
+					flight.setCapacityFull(true);
+				}
+			} else {
+				System.out.println("The flight " + flight.getFlightNumber() + " is already full, the order: " + order.getOrderNumber() + " not loaded");
 			}
 		} else {
-			System.out.println("The flight " + flight.getFlightNumber() + " is already full, the order: " + order.getOrderNumber() + " not loaded");
+			System.out.println("The flight destination is: " + flight.getDestinationAirport().name() +
+					", but order destination is: " + order.getDestinationAirport().name() + "! Lord to wring flight!");
 		}
+
 		return loaded;
 	}
 

@@ -23,7 +23,7 @@ public class InventoryManager {
 		return orderList;
 	}
 
-	public void loadedInventory(String fileName) throws IOException, ParseException {
+	public void loadedInventory(String fileName) throws IOException {
 		addToInventory((new OrderParser()).getOrderList(fileName));
 	}
 
@@ -41,7 +41,9 @@ public class InventoryManager {
 
 	public List<Order> sortOrderListByDestinationAndPriority(DestinationAirport value){
 		List<Order> orderList = getOrderListByDestination(value);
-		orderList.sort(Comparator.comparing(Order::getPriority));
+		if(orderList.size() > 0){
+			orderList.sort(Comparator.comparing(Order::getPriority));
+		}
 		return orderList;
 	}
 }
